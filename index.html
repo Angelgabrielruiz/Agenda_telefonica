@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Agenda Telefónica</title>
+</head>
+<body>
+    <h1>Agenda Telefónica</h1>
+    <label for="name">Nombre:</label>
+    <input type="text" id="name">
+    <label for="tel">Teléfono:</label>
+    <input type="text" id="tel">
+    <button id="add">Agregar</button>
+    <h2>Contactos</h2>
+    <pre id="contactList"></pre>
+    <button id="view">Ver Contactos</button>
+    <button id="receive">Recibir</button>
+    <h2>Buscar Contacto</h2>
+    <label for="searchName">Nombre:</label>
+    <input type="text" id="searchName">
+    <button id="search">Buscar</button>
+    <div id="searchResult"></div>
+    <script type="module" src="src/Controllers/index.js"></script>
+</body>
+</html>
