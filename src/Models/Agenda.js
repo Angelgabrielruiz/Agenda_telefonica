@@ -1,38 +1,34 @@
 import { Queue } from "../Models/Queue.js";
+import { LinkedList } from "./linkedList.js";
+
 
 class Agenda {
     constructor() {
         this.contacto = new Queue();
+        this.contactosLinkedList = new LinkedList(); 
     }
 
     addContact(nombre, telefono) {
         this.contacto.enqueue({ nombre, telefono });
+        this.contactosLinkedList.push({ nombre, telefono }); 
     }
 
     viewContacts() {
-        const contactos = [];
-        const tempQueue = new Queue();
-
-        while (!this.contacto.isEmpty()) {
-            const contacto = this.contacto.dequeue();
-            contactos.push(contacto);
-            tempQueue.enqueue(contacto);
-        }
-
-        while (!tempQueue.isEmpty()) {
-            this.contacto.enqueue(tempQueue.dequeue());
-        }
-
-        return contactos;
+        
+        return this.contactosLinkedList;
     }
 
     receiveContact() {
-        return this.contacto.dequeue();
+        const primerContacto = this.contacto.dequeue();
+        if (primerContacto) {
+            this.contactosLinkedList.shift();
+        }
+        return primerContacto;
     }
 
     searchContact(nombre) {
-        const tempQueue = new Queue();
         let contactoEncontrado = null;
+        const tempQueue = new Queue();
 
         while (!this.contacto.isEmpty()) {
             const contacto = this.contacto.dequeue();

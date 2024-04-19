@@ -1,7 +1,6 @@
-//linkedList.js
 import { Node } from "./Node.js"
 
-export class LinkedList {
+class LinkedList {
     constructor() {
         this.head = null
         this.size = 0
@@ -37,3 +36,5 @@ export class LinkedList {
         return this.size
     }
 }
+
+export {LinkedList};

@@ -1,20 +1,19 @@
+import { LinkedList } from "./linkedList.js";
+
 export class Queue {
-  constructor() {
-      this.items = [];
-  }
+    constructor() {
+        this.linkedList = new LinkedList();
+    }
 
-  enqueue(element) {
-      this.items.push(element);
-  }
+    enqueue(element) {
+        this.linkedList.push(element);
+    }
 
-  dequeue() {
-      if (this.isEmpty()) {
-          return null;
-      }
-      return this.items.shift();
-  }
+    dequeue() {
+        return this.linkedList.shift();
+    }
 
-  isEmpty() {
-      return this.items.length === 0;
-  }
+    isEmpty() {
+        return this.linkedList.size === 0;
+    }
 }

@@ -1,6 +1,5 @@
 import { Agenda } from '../Models/Agenda.js';
 
-
 const elements = {
     add: document.getElementById('add'),
     view: document.getElementById('view'),
@@ -13,15 +12,12 @@ const elements = {
     searchButton: document.getElementById('search') 
 };
 
-
 const agenda = new Agenda();
-
 
 elements.add.addEventListener('click', addContact);
 elements.view.addEventListener('click', viewContacts);
 elements.receive.addEventListener('click', receiveContact);
 elements.searchButton.addEventListener('click', searchContact); 
-
 
 function addContact() {
     const nombre = elements.name.value;
@@ -29,7 +25,6 @@ function addContact() {
     agenda.addContact(nombre, telefono);
     clearInputFields();
 }
-
 
 function viewContacts() {
     const listaContactos = agenda.viewContacts();
@@ -41,13 +36,15 @@ function viewContacts() {
     }
 
     let listaContactosHTML = '';
-    for (const contacto of listaContactos) {
-        listaContactosHTML += 'Nombre: ' + contacto.nombre + ' | Teléfono: ' + contacto.telefono + '\n';
+    let currentNode = listaContactos.head;
+
+    while (currentNode) {
+        listaContactosHTML += `Nombre: ${currentNode.data.nombre} | Teléfono: ${currentNode.data.telefono}\n`;
+        currentNode = currentNode.next;
     }
     
     contactList.textContent = listaContactosHTML;
 }
-
 
 function searchContact() {
     const nombreBuscar = elements.searchName.value;

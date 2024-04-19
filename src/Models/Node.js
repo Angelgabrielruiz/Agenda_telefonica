@@ -1,4 +1,3 @@
-//Node
 export class Node{
     data
     next
